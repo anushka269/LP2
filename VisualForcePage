@@ -1,0 +1,20 @@
+#VisualForcePage
+
+<apex:page controller="CalculatorController">
+    <apex:form>
+        <apex:pageMessages />
+        <apex:pageBlock title="Simple Calculator">
+            <apex:pageBlockSection columns="2">
+                <apex:inputText value="{!number1}" label="Number 1" />
+                <apex:inputText value="{!number2}" label="Number 2" />
+                <apex:selectList value="{!operation}" size="1" label="Operation">
+                    <apex:selectOptions value="{!operations}" />
+                </apex:selectList>
+            </apex:pageBlockSection>
+            <apex:commandButton value="Calculate" action="{!calculate}" rerender="resultPanel"/>
+            <apex:outputPanel id="resultPanel">
+                <apex:outputText value="Result: {!result}" style="font-weight:bold; display:block; margin-top:10px"/>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
