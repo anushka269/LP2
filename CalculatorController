@@ -1,0 +1,31 @@
+public class CalculatorController {
+    public Decimal number1 { get; set; }
+    public Decimal number2 { get; set; }
+    public Decimal result { get; set; }
+    public String operation { get; set; }
+
+    public void calculate() {
+        if (operation == 'Add') {
+            result = number1 + number2;
+        } else if (operation == 'Subtract') {
+            result = number1 - number2;
+        } else if (operation == 'Multiply') {
+            result = number1 * number2;
+        } else if (operation == 'Divide') {
+            if (number2 != 0) {
+                result = number1 / number2;
+            } else {
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Cannot divide by zero'));
+            }
+        }
+    }
+
+    public List<SelectOption> getOperations() {
+        return new List<SelectOption>{
+            new SelectOption('Add', 'Add'),
+            new SelectOption('Subtract', 'Subtract'),
+            new SelectOption('Multiply', 'Multiply'),
+            new SelectOption('Divide', 'Divide')
+        };
+    }
+}
